@@ -16,19 +16,28 @@ RUN apt-get update && apt-get install -y \
 	liblmdb-dev \
 	libopencv-dev \
 	libeigen3-dev \
+	freeglut3 \
+	freeglut3-dev \
+	libxmu-dev \
+	libxi-dev \
 	python-numpy \
 	python-protobuf \
 	wget \
 	git \
 	cmake 
 
-# compile openpose
+# clone openpose
 RUN git clone https://github.com/CMU-Perceptual-Computing-Lab/openpose.git
+
+# first download the available models
+RUN cd openpose/models/ && ./getModels.sh
+
+# generate openpose binaries
 RUN cd openpose && mkdir build && cd build && \
 	cmake -DCMAKE_BUILD_TYPE=Release \
 	-DDOWNLOAD_BODY_COCO_MODEL=ON \
 	-DDOWNLOAD_BODY_MPI_MODEL=ON \
-	-DUSE_3D_RENDERER=ON \
+	-DWITH_3D_RENDERER=ON \
 	-DWITH_EIGEN=APT_GET \
 	.. && make -j8
 
