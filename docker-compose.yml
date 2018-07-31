@@ -1,0 +1,15 @@
+version: '2.3'
+services:
+  openpose:
+    build: ../openpose-docker
+    image: openpose:latest
+    runtime: nvidia
+    environment:
+      - DISPLAY
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ./input:/input
+      - ./output:/output
+
+    devices:
+      - /dev/video0:/dev/video0
