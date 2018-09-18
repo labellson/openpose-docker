@@ -1,8 +1,7 @@
 version: '2.3'
 services:
   openpose:
-    build: ../openpose-docker
-    image: openpose:latest
+    image: labellson/openpose
     runtime: nvidia
     environment:
       - DISPLAY
