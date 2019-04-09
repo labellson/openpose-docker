@@ -1,0 +1,14 @@
+#+TITLE: Openpose-docker
+#+AUTHOR: Daniel Laguna
+#+EMAIL: dani@dani.codes
+
+#+Options: email:t date:nil toc:nil H:3
+
+Ubuntu 18.04 Openpose standalone image with:
+- Cuda 10.1 and cuDNN 7
+- *Body_25*, *COCO* and *MPI* models
+- 3D rendering Module
+- Python API module
+- OpenCV support
+- Eigen3
+- ceres-solver
